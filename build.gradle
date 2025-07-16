@@ -1,0 +1,72 @@
+group 'co.com.bancolombia.certification'
+version '1.0-SNAPSHOT'
+
+ext {
+    serenityVersion = '4.1.13'
+    serenityCucumberVersion = '4.1.13'
+}
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'java-library'
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.3.2"
+    }
+}
+
+dependencies {
+    implementation 'in.yajnesh.util:java-util:1.0.0'
+    implementation 'org.codehaus.plexus:plexus-utils:3.4.1'
+    implementation 'jline:jline:2.13'
+    implementation "net.serenity-bdd:serenity-core:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-junit:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-ensure:$serenityVersion"
+    implementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
+    implementation group: 'net.serenity-bdd', name: 'serenity-reports', version: '4.1.13'
+    implementation group: 'net.serenity-bdd', name: 'serenity-reports-configuration', version: '4.1.13'
+    implementation 'log4j:log4j:1.2.17'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    testImplementation "net.serenity-bdd:serenity-cucumber:$serenityCucumberVersion"
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.rest-assured:json-schema-validator:5.1.1'
+    testImplementation 'org.assertj:assertj-core:3.8.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.6'
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+}
+
+test{
+    systemProperty 'userPrueba', System.getProperty('userPrueba')
+    systemProperty 'passwordPrueba', System.getProperty('passwordPrueba')
+    testLogging.showStandardStreams = true
+    finalizedBy(aggregate)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+ 
