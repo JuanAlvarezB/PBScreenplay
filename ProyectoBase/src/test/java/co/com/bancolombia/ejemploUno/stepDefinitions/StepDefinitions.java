@@ -1,6 +1,7 @@
 package co.com.bancolombia.ejemploUno.stepDefinitions;
 
 import co.com.bancolombia.ejemploUno.models.*;
+import co.com.bancolombia.ejemploUno.questions.ValidarMensaje;
 import co.com.bancolombia.ejemploUno.questions.ValidarTexto;
 import co.com.bancolombia.ejemploUno.tasks.*;
 import io.cucumber.java.en.And;
@@ -47,9 +48,26 @@ public class StepDefinitions {
 
     @Then("valida que la compra se haya realizado correctamente visualizando el mensaje de confirmación")
     public void validaQueLaCompraSeHayaRealizadoCorrectamenteVisualizandoElMensajeDeConfirmación(MessageModel messageModel) {
-        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarTexto.validarTexto(messageModel,TEXTO_COMPRA_EXITOSA)));
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarTexto.validarTexto(messageModel, TEXTO_COMPRA_EXITOSA)));
 
     }
 
+    @And("ingresa la informacion de {string}, {string} y {string}")
+    public void ingresaLaInformacionDeY(String nombre, String apellido, String codigoPostal) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                LlenarFormualrio.infousuario(nombre, apellido, codigoPostal)
+        );
+    }
 
+    @Then("el usuario visualiza el {string}")
+    public void elUsuarioVisualizaEl(String mensaje) {
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarMensaje.comprobarMensaje(TEXTO_COMPRA_EXITOSA,mensaje)));
+    }
+
+    @When("selecciona unos productos para agregarlos al carrito")
+    public void seleccionaUnosProductosParaAgregarlosAlCarrito() {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                AgregarProducctos.carrito()
+        );
+    }
 }

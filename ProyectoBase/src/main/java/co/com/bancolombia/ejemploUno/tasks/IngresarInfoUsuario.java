@@ -24,7 +24,6 @@ public class IngresarInfoUsuario implements Task {
                 Enter.theValue(userInformationModel.getPostalCode()).into(POSTAL_CODE),
                 Click.on(BTN_CONTINUE),
                 Click.on(BTN_FINISH)
-
         );
     }
 
