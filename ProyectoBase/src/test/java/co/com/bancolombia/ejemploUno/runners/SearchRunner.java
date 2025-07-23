@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features = "src/test/resources/features/ejemplo_uno.feature",
+@CucumberOptions(features = "src/test/resources/features",
         glue = {"co.com.bancolombia.ejemploUno.stepDefinitions",
         "co.com.bancolombia.ejemploUno.datadefinitions"},
         snippets = CAMELCASE,
