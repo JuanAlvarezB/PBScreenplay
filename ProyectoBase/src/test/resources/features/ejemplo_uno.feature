@@ -1,5 +1,4 @@
 #Autor: juacamal@bamcolombia.com.co
-
 @RealizarCompras
 Feature: logearse en saucedemo y realizar una compra
 

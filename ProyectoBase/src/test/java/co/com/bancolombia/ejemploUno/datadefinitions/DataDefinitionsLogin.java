@@ -10,6 +10,7 @@ import java.util.Map;
 import static co.com.bancolombia.ejemploUno.utils.Constants.*;
 
 public class DataDefinitionsLogin {
+
     @DataTableType(replaceWithEmptyString = "[blank]")
     public LoginCredencialesModel loginCredencialesModel(Map<String,String> entry){
         return new LoginCredencialesModel(

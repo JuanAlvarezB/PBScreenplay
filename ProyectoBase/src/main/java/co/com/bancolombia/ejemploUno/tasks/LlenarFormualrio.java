@@ -34,6 +34,5 @@ public class LlenarFormualrio implements Task {
                 Click.on(BTN_CONTINUE),
                 Click.on(BTN_FINISH)
         );
-
     }
 }

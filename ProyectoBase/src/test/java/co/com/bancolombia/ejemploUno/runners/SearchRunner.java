@@ -13,7 +13,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         "co.com.bancolombia.ejemploUno.datadefinitions"},
         snippets = CAMELCASE,
         plugin = {"pretty"},
-        tags = "@RealizarCompras"
+        tags = "@ComprarVarias"
 )
 public class SearchRunner {
 }

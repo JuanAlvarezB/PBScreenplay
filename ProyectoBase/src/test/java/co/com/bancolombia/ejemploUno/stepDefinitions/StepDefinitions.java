@@ -61,7 +61,8 @@ public class StepDefinitions {
 
     @Then("el usuario visualiza el {string}")
     public void elUsuarioVisualizaEl(String mensaje) {
-        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarMensaje.comprobarMensaje(TEXTO_COMPRA_EXITOSA,mensaje)));
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarMensaje
+                .comprobarMensaje(TEXTO_COMPRA_EXITOSA,mensaje)));
     }
 
     @When("selecciona unos productos para agregarlos al carrito")

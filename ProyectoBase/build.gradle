@@ -2,8 +2,8 @@ group 'co.com.bancolombia.certification'
 version '1.0-SNAPSHOT'
 
 ext {
-    serenityVersion = '4.1.13'
-    serenityCucumberVersion = '4.1.13'
+    serenityVersion = '4.2.8'
+    serenityCucumberVersion = '4.2.8'
 }
 
 defaultTasks 'clean', 'test', 'aggregate'
